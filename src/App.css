@@ -1,0 +1,626 @@
+/* Variables de colores actualizadas */
+:root {
+  --primary-bg: #121212;
+  --secondary-bg: #1e1e1e;
+  --accent-gold: #FFD700;
+  --accent-gold-light: #ffdf4d;
+  --accent-gold-dark: #d4af37;
+  --text-light: #ffffff;
+  --text-gray: #b3b3b3;
+  --positive: #4CAF50;
+  --negative: #F44336;
+  --card-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  --glass-bg: rgba(30, 30, 30, 0.7);
+  --glass-border: rgba(255, 215, 0, 0.15);
+}
+
+/* Fuentes modernas */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--primary-bg);
+  color: var(--text-light);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background: 
+    radial-gradient(circle at top left, rgba(212, 175, 55, 0.05) 0%, transparent 20%),
+    linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  background-attachment: fixed;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header moderno con efecto vidrio */
+.app-header {
+  background: linear-gradient(to right, #000000, #2c2c2c);
+  text-align: center;
+  padding: 2.5rem 1rem;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.app-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, transparent 10%, var(--accent-gold) 150%);
+  opacity: 0.08;
+  z-index: -1;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.app-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: var(--text-gray);
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+.gold-bar {
+  height: 4px;
+  width: 100px;
+  background: linear-gradient(to right, var(--accent-gold-dark), var(--accent-gold));
+  margin: 1rem auto;
+  border-radius: 2px;
+  transform-origin: left;
+  animation: scaleBar 2s ease-in-out infinite alternate;
+}
+
+@keyframes scaleBar {
+  0% { transform: scaleX(0.8); }
+  100% { transform: scaleX(1.2); }
+}
+
+/* Banner con efecto brillo */
+.banner {
+  background: linear-gradient(to right, rgba(26, 26, 26, 0.8), rgba(45, 45, 45, 0.8));
+  text-align: center;
+  padding: 1.2rem;
+  font-style: italic;
+  border-top: 1px solid rgba(255, 215, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  color: var(--accent-gold);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+  animation: bannerShine 3s infinite linear;
+}
+
+@keyframes bannerShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.banner p {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dashboard principal */
+.crypto-dashboard {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.market-info {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.info-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1.8rem;
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+}
+
+.info-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.info-card h3 {
+  color: var(--accent-gold);
+  margin-bottom: 0.8rem;
+  font-size: 1.4rem;
+}
+
+.info-card p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.crypto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tarjetas de criptomonedas modernas */
+.crypto-card {
+  background: var(--glass-bg);
+  border-radius: 16px;
+  padding: 2.2rem;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 1px solid var(--glass-border);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.crypto-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--accent-gold), transparent);
+  transition: height 0.3s ease;
+}
+
+.crypto-card:hover::before {
+  height: 100%;
+  opacity: 0.05;
+}
+
+.crypto-card:hover {
+  transform: translateY(-8px) rotate(1deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.crypto-header {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  z-index: 2;
+}
+
+.crypto-header img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-gold);
+  transition: var(--transition);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.crypto-card:hover .crypto-header img {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 25px var(--accent-gold);
+}
+
+.crypto-titles h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  transition: var(--transition);
+}
+
+.crypto-card:hover .crypto-titles h2 {
+  color: var(--accent-gold-light);
+}
+
+.symbol {
+  color: var(--accent-gold);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.crypto-card:hover .symbol {
+  letter-spacing: 2px;
+}
+
+.crypto-price-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.crypto-price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(to right, var(--text-light), var(--accent-gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: var(--transition);
+}
+
+.crypto-card:hover .crypto-price {
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.crypto-change {
+  font-size: 1.25rem;
+  font-weight: 500;
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  background: rgba(30, 30, 30, 0.7);
+  transition: var(--transition);
+}
+
+.crypto-card:hover .crypto-change {
+  font-weight: 700;
+}
+
+.crypto-change.positive {
+  color: var(--positive);
+  background: rgba(76, 175, 80, 0.15);
+}
+
+.crypto-change.negative {
+  color: var(--negative);
+  background: rgba(244, 67, 54, 0.15);
+}
+
+.crypto-quote {
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
+  padding-top: 1.2rem;
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: var(--text-gray);
+  transition: var(--transition);
+  z-index: 2;
+}
+
+.crypto-card:hover .crypto-quote {
+  color: var(--text-light);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+/* Knowledge Section modernizada */
+.knowledge-section {
+  padding: 3.5rem 2rem;
+  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.knowledge-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at bottom right, var(--accent-gold) 0%, transparent 20%);
+  opacity: 0.05;
+  z-index: 0;
+}
+
+.knowledge-section h3 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  color: var(--accent-gold);
+  font-family: 'Playfair Display', serif;
+  position: relative;
+  z-index: 1;
+}
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.fact-card {
+  background: var(--glass-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid var(--glass-border);
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+}
+
+.fact-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.fact-icon {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-gold);
+  display: inline-block;
+  transition: var(--transition);
+}
+
+.fact-card:hover .fact-icon {
+  transform: scale(1.2) translateY(-5px);
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.fact-card p {
+  color: var(--text-gray);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  transition: var(--transition);
+}
+
+.fact-card:hover p {
+  color: var(--text-light);
+}
+
+/* Loading spinner mejorado */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+}
+
+.spinner {
+  width: 70px;
+  height: 70px;
+  border: 5px solid rgba(255, 215, 0, 0.2);
+  border-top: 5px solid var(--accent-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1.8rem;
+  position: relative;
+}
+
+.spinner::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--accent-gold-dark);
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Footer moderno */
+.app-footer {
+  background: linear-gradient(to right, #000000, #2c2c2c);
+  color: var(--text-gray);
+  text-align: center;
+  padding: 2.2rem 1rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.app-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top left, var(--accent-gold) 0%, transparent 70%);
+  opacity: 0.05;
+  z-index: -1;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.disclaimer {
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Error message con animación */
+.error-message {
+  background-color: rgba(30, 30, 30, 0.9);
+  border: 1px solid var(--negative);
+  padding: 2.2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 600px;
+  margin: 2rem auto;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.2); }
+  70% { box-shadow: 0 0 0 15px rgba(244, 67, 54, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(244, 67, 54, 0); }
+}
+
+.error-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--negative);
+}
+
+.error-message p {
+  color: var(--text-light);
+  margin-bottom: 1.8rem;
+  font-size: 1.15rem;
+}
+
+.error-message button {
+  background: transparent;
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+  padding: 0.9rem 2.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: var(--transition);
+  font-size: 1.05rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.error-message button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+  transition: 0.5s;
+}
+
+.error-message button:hover::before {
+  left: 100%;
+}
+
+.error-message button:hover {
+  background: var(--accent-gold);
+  color: var(--primary-bg);
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-header h1 {
+    font-size: 2.8rem;
+  }
+
+  .crypto-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .crypto-price {
+    font-size: 2.2rem;
+  }
+  
+  .market-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .info-card {
+    min-width: 100%;
+  }
+  
+  .facts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .crypto-header img {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .crypto-titles h2 {
+    font-size: 1.6rem;
+  }
+  
+  .crypto-price {
+    font-size: 1.9rem;
+  }
+  
+  .banner {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
